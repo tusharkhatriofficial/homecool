@@ -15,9 +15,9 @@ To solve a problem we need to determine the problem first. When taking about Hom
 - Old and Boaring website designs.
 
 We are planning to work towards fixing all of the above mentioned problems by creating a playful and simple Web App. This
-Web app will me strcutured in a modern way so that students can easily navigate through the app and find whatever they are looking for! The best application is the one where users feel comfortable navigating and working on, thus we will work on building such a thing.
+Web app will be strcutured in a modern way so that students can easily navigate through the app and find whatever they are looking for! The best application is the one where users feel comfortable navigating and working on, thus we will work on building such a thing.
 
-> We might even build apps for Android and IOS to make our solution even more accessible and useeful to a wide variety of audience.
+> We might even build apps for Android and IOS to make our solution even more accessible and useful to a wide variety of audience.
 
 ## Our Final Demo.
 
