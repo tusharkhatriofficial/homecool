@@ -156,7 +156,11 @@ a:active {
 <body>
   
 <div class="wrapper">
-	<form class="steps">
+	<form 
+	class="steps"
+	action="/signin"
+	method="post"
+	>
 		<div>
 			<div class="step1" data-bind="fadeVisible: step() == 1, css: {current : step() == 1}, hasfocus: step() == 1">
        <center>
@@ -199,7 +203,7 @@ a:active {
 			<button class="prev" data-bind="visible: step() > 1, click: prev">previous</button>
 			<button class="next" data-bind="visible: step() < 2, click: next">next</button>
 			<a href="home.htm"><button id="done" data-bind="visible: step() == 2, click: next">done</button></a>
-            <button data-bind="visible: step() == 3"> <a href="home.htm">Start</a></button>
+            <button data-bind="visible: step() == 3">Start</button>
 		</div>
 	</form>
 </div>
