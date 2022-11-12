@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homecool - Sign up</title>
+
+<style>
+*{
+	font-family: "Quicksand", sans-serif;
+}
+*:active, *:focus{
+	outline: none;
+}
+
+body{
+	background: #32327F;
+	max-width: 960px;
+	margin: auto auto;
+	padding: 120px 25%;
+}
+
+.wrapper{
+	animation: fadeIn 0.8s;
+}
+
+
+/* Start the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+
+  background: #ffffff url('logo.png') no-repeat center;
+}
+
+
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+/* end of the loader */
+
+
+p{
+      display: block;
+	color: #fff;
+	font-size: 2.3em;
+	font-weight: bold;
+	
+}
+
+label{
+	display: block;
+	color: #fff;
+	font-size: 2.3em;
+	font-weight: bold;
+	transition: all 1s;
+}
+
+input{
+	display: block;
+	width: 100%;
+	background: transparent;
+	border: none;
+	padding: 20px 10px 10px;
+	color: #eee;
+	font-size: 1.2em;
+	font-family: "Raleway", sans-serif;
+	letter-spacing: 0.08em;
+}
+
+button{
+	color: #fff;
+	background-color: #2c6f77;
+	border: none;
+	padding: 0.5em;
+	width: 9em;
+	transition: 0.3s;
+	margin: 0.2em;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+button:hover{
+	background-color: #000;
+}
+
+.input-bar{
+	width: 100%;
+	height: 1px;
+	background-color: #555;
+}
+
+.progress-bar{
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+}
+
+.steps-navigation{
+	float: right;
+	padding: 30px;
+}
+
+.current label{
+	opacity: 1;
+	transition: all 1s;
+}
+
+button{
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+	from{ 
+		opacity:  0; 
+	}
+	to{
+		opacity: 1;
+	}
+}
+@keyframes fadeInOut {
+	0%{ 
+		opacity:  0; 
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+</style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  
+ 
+<div class="wrapper">
+
+
+	<form class="steps">
+		
+			
+       
+        
+				
+			<div>
+ <center>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/9768d639-1694-44ac-b5ec-4ef7b9929e86/8l7vbFDk6Y.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+ <label>Hey! Have we met before?</label><br/>
+</center>
+			</div>
+			
+		</div>
+
+		<div class="progress">
+
+			<div class="input-bar"></div>
+			<div class="progress-bar"></div><br/>
+            
+		</div>
+		<div class="steps-navigation">
+			<button><a href="signin.htm">yeah</a></button>
+			<button><a href="signup.htm">nope</a></button>
+		</div>
+	</form>
+</div>
+  </center>
+
+    
+
+<script>
+var vm = {
+  name : ko.observable(""),
+  email : ko.observable(""),
+  phone : ko.observable(""),
+  password : ko.observable(""),
+  subject : ko.observable(""),
+	step : ko.observable(1),
+	
+}
+
+ko.bindingHandlers.fadeVisible = {
+    init: function(element, valueAccessor) {
+        // Initially set the element to be instantly visible/hidden depending on the value
+        var value = valueAccessor();
+        $(element).toggle(ko.unwrap(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+    },
+    update: function(element, valueAccessor) {
+        // Whenever the value subsequently changes, slowly fade the element in or out
+        var value = valueAccessor();
+        ko.unwrap(value) ? $(element).fadeIn() : $(element).hide();
+    }
+};
+
+
+ko.applyBindings(vm);
+
+//loader
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+
+
+
+</script>
+
+</body>
+</html>

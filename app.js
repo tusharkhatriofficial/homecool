@@ -39,11 +39,15 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("index");
+  res.render("home");
 });
 
 app.get("/final", (req, res) => {
   res.render("final");
+});
+
+app.get("/logout", (req, res) => {
+  res.redirect("/");
 });
 
 app.post("/signup", async (req, res) => {
@@ -52,7 +56,7 @@ app.post("/signup", async (req, res) => {
 
   try {
     const oldUser = await User.findOne({ email });
-    if (oldUser) return res.redirect("/signin");
+    if (oldUser) return res.redirect("/final");
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -63,7 +67,7 @@ app.post("/signup", async (req, res) => {
       password: hashedPassword,
     });
 
-    res.render("final", { newUser });
+    res.render("home", { newUser });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Server error" });
@@ -79,13 +83,9 @@ app.post("/signin", async (req, res) => {
     const isMatch = await bcrypt.compare(password, newUser.password);
     if (!isMatch)
       return res.status(400).json({ message: "Invalid credentials" });
-    res.render("final", { newUser });
+    res.render("home", { newUser });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Server error" });
   }
 });
-
-// app.listen(PORT, "0.0.0.0", () => {
-//   console.log(`Server is running on ${PORT}`);
-// });
