@@ -40,6 +40,7 @@ app.use(passport.session());
 //database stuff
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
+
 // new mongoose.Schema({}) is must if we want to use plugins with schemas.
 const userSchema = new mongoose.Schema({
     email: String,
