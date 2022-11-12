@@ -54,7 +54,7 @@ p{
 	color: #fff;
 	font-size: 2.3em;
 	font-weight: bold;
-	
+
 }
 
 label{
@@ -121,16 +121,16 @@ button{
 }
 
 @keyframes fadeIn {
-	from{ 
-		opacity:  0; 
+	from{
+		opacity:  0;
 	}
 	to{
 		opacity: 1;
 	}
 }
 @keyframes fadeInOut {
-	0%{ 
-		opacity:  0; 
+	0%{
+		opacity:  0;
 	}
 	50%{
 		opacity: 1;
@@ -169,17 +169,17 @@ a:active {
 <div id="loader"></div>
 
 <div style="display:none;" id="myDiv" class="animate-bottom">
-  
- 
+
+
 <div class="wrapper">
 
 
 	<form class="steps">
-		
-			
-       
-        
-				
+
+
+
+
+
 			<div>
  <center>
           <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -188,14 +188,14 @@ a:active {
  <label>Hey! Have we met before?</label><br/>
 </center>
 			</div>
-			
+
 		</div>
 
 		<div class="progress">
 
 			<div class="input-bar"></div>
 			<div class="progress-bar"></div><br/>
-            
+
 		</div>
 		<div class="steps-navigation">
 			<button><a href="/signin">yeah</a></button>
@@ -205,7 +205,7 @@ a:active {
 </div>
   </center>
 
-    
+
 
 <script>
 var vm = {
@@ -215,7 +215,7 @@ var vm = {
   password : ko.observable(""),
   subject : ko.observable(""),
 	step : ko.observable(1),
-	
+
 }
 
 ko.bindingHandlers.fadeVisible = {
