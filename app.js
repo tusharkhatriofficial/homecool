@@ -121,8 +121,20 @@ app.get("/logout", (req, res) => {
     });
 });
 
+app.get("/account", (req, res) => {
+
+    if(req.isAuthenticated()){
+        let name = req.user.name;
+        let email = req.user.username;
+        let phone = req.user.phone;
+        res.render("account", {name: name, email: email, phone: phone});
+    }else{
+        res.redirect("/")
+    }
+});
+
 app.get("*", (req, res) => {
-    res.send("The page you are looking for does not exists!");
+    res.render("404");
 });
 
 app.post("/signup", (req, res) => {
