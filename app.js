@@ -1,4 +1,9 @@
 //jshint esversion:6
+
+import { copyFileSync } from 'fs';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 require('dotenv').config();
 const express = require("express"); 
 const bodyParser = require("body-parser");
@@ -9,6 +14,8 @@ const findOrCreate = require("mongoose-findorcreate");
 const { google } =  require("googleapis");
 const nodemailer = require("nodemailer");
 const { oauth2 } = require("googleapis/build/src/apis/oauth2");
+import fetch from 'node-fetch';
+import { dirname } from 'path';
 
 
 // 1 TODO: Require all these 3 packages, we don't have to require "passport-local" as it is already included with "passport-local-mongoose"
@@ -17,11 +24,12 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 
 
+
 const app = express();
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 2 TODO: use session here
 app.use(session({
@@ -141,6 +149,51 @@ async function notification( formData, sendTo ){
     }
   }
 
+
+//setup to fetch blog data from hashnode api and display on the home page
+
+async function fetchHashnodeBlog(){
+
+    const variables = { page: 0 };
+  
+    const query = `
+    query GetUserArticles($page: Int!) {
+      user(username: "ankitkp028") {
+          publication {
+              posts(page: $page) {
+                  title
+                  brief
+                  slug
+                  coverImage
+                  dateAdded
+              }
+          }
+      }
+  }
+  `;
+  
+  
+    const data = await fetch("https://api.hashnode.com/", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          query,
+          variables,
+      }),
+  });
+  
+  const result = await data.json();
+  //the actual post is nested deep down in the result object
+  const articles = result.data.user.publication.posts;
+  return articles;
+  }
+
+
+
+//get requests
+
 app.get("/", (req, res) => {
     if(req.isAuthenticated()){
         res.redirect("/home");
@@ -170,10 +223,13 @@ app.get("/signin", (req, res) => {
 });
 
 
-app.get("/home", (req, res) => {
+app.get("/home", async (req, res) => {
     
     if(req.isAuthenticated()){
-        res.render("home", {name: req.user.name});
+
+        const blogList = await fetchHashnodeBlog();
+
+        res.render("home", {blogList: blogList});
     }else{
         res.redirect("/index")
     }

@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="css/picto-foundry-general.css" />
 	
 	<link href="css/font-awesome.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/css/blog-card.css">
 </head>
 	<body>
 		<div class="pushWrapper">
@@ -249,7 +250,7 @@
 				</div></div>
 
 							<div class="event-image">
-								<img src="images/lambo2copy.jpg" alt="" />	
+								<img src="images/logo.png" alt="" />	
 							</div>
 		 				</li>
 						
@@ -273,7 +274,7 @@
 							</div>
 
 							<div class="event-image">
-								<img src="images/lambo2copy.jpg" alt="your text" />					</div>
+								<img src="images/logo.png" alt="your text" />					</div>
 		 				</li>
 						
 						
@@ -293,7 +294,7 @@
 							</div>
 
 							<div class="event-image">
-								<img src="images/lambo2copy.jpg" alt="your text here" />					</div>
+								<img src="images/logo.png" alt="your text here" />					</div>
 		 				</li>
 						
 						
@@ -315,7 +316,7 @@
 							</div>
 
 							<div class="event-image">
-								<img src="images/lambo2copy.jpg" alt="your text" />			
+								<img src="images/logo.png" alt="your text" />			
 							</div>
 		 				</li>
 <li> <center>  <a href="https://www.nios.ac.in/notice-boardoffice-order.aspx">
@@ -354,8 +355,12 @@
 		    </div>
 
 		    <div class="intro content-template">
+
 		        <p><strong>UG Admission forms are open now!</strong></p>
-				<a href="/admission-form">Apply.</a>
+
+				<a href="/admission-form">
+					<button type="button" class="form-btn semibold">Apply Now</button>
+				</a>
 				 </div>
 			
 
@@ -389,34 +394,41 @@
 	    </div>
 
 			
-		<section class="membership-part" id="membership-part">
-
-			
-			<div class="membership-part-section-seperator" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
-				<div class="container-template">
-					<img style="margin: auto;" src="images/keys.png" alt="keys">
-					<div class="headergroup">
-						<h2>
-					        <span class="seconday"></span>
-					        <span>Resources</span>
-
-					    </h2>
-				    </div>
-
-				    <div class="content-template">
-				        <p>Coming Soon.</p>
-						<p>Coming Soon</p>
-				    </div>
-				    <br>
-				    <button type="button" class="form-btn semibold">Coming Soon</button>
-				</div>
-			</div>
-
-		</section>
+		
 		</section>
 			
 			
 		<section class="membership-part" id="membership-part">
+
+			<h1>Online Library</h1>
+
+			<!-- Hashnode blog section -->
+			<div class="container">
+				<% blogList.forEach( (post) =>{ %>
+			
+								<div class="card">
+								  <div class="card__header">  
+									<a href="https://blog.tusharkhatri.in/<%=post.slug%>"><img src="<%=post.coverImage%>" alt="<%=post.title%>" class="card__image" width="600"></a>
+								  </div>
+								  <div class="card__body">
+									<!-- <span class="tag" style="background-color: #FFC007;">Follow on GitHub</span> -->
+									<h4 class="text-dark"><%=post.title%></h4>
+									<p><%=post.brief%><span style="color: #FFC007;"><br><a href="https://blog.homecool.co/<%=post.slug%>">Read more...</a></span></p>
+								  </div>
+								  <div class="card__footer">
+									<div class="user">
+									  <img src="images/logo-small.png" alt="Tushar Khatri" class="user__image">
+									  <div class="user__info">
+										<h5 class="text-dark">HomeCool admin</h5>
+										<small><%-new Date(post.dateAdded).getDate();%> -</small>
+										<small><%-new Date(post.dateAdded).getMonth();%> -</small>
+										<small><%-new Date(post.dateAdded).getFullYear();%></small>
+									  </div>
+									</div>
+								  </div>
+								</div>
+				 <% }); %>  
+				  </div>	
 
 			
 			<div class="membership-part-section-seperator" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
@@ -433,6 +445,8 @@
 						
 				    </div>
 				    </div>
+
+	
 
 				 
 
@@ -469,6 +483,8 @@
 				  <a href="https://results.nios.ac.in/">  <button type="button" class="form-btn semibold" style="width: 380px;">Results</button>
 </td>
 </tr>
+
+
 
 </table>
 				</div>
