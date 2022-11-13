@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     name: String,
     phone: String,
+    admissionDetails: Object,
 });
 
 // 5 TODO: use userSchema with "passport-local-mongoose" to hash and salt password.
@@ -99,7 +100,7 @@ async function sendMail(senderName, senderEmail, senderSubject, senderQuery){
       },
     });
     const mailOptions = {
-      from: "Bot <noreply@tusharkhatri.in>",
+      from: "Homecool Bot <noreply@tusharkhatri.in>",
       to: "hello@tusharkhatri.in",
       subject: `${senderEmail} sent you a message`,
       text: `Message from ${senderName}:\n Subject: ${senderSubject}\n Query: ${senderQuery}`,
@@ -112,12 +113,44 @@ async function sendMail(senderName, senderEmail, senderSubject, senderQuery){
 }
 
 
+
+async function notification( formData, sendTo ){
+    try{
+      const ACCESS_TOKEN = await oAuth2Client.getAccessToken();
+      const transport = nodemailer.createTransport({  
+        service: 'gmail',
+        auth: {
+          type: 'OAuth2',
+          user: 'noreply.tusharkhatri.in@gmail.com',
+          clientId: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
+          refreshToken: process.env.REFRESH_TOKEN,
+          accessToken: ACCESS_TOKEN,
+        },
+      });
+      const mailOptions = {
+        from: "Homecool Bot <noreply@tusharkhatri.in>",
+        to: sendTo,
+        subject: `You application for Admission at Homecool was submitted sucessfully!`,
+        text: `Details Received:\n\n ${formData}`,
+      }
+      const result = await transport.sendMail(mailOptions);
+      return result;
+    }catch (error) {
+      return error;
+    }
+  }
+
 app.get("/", (req, res) => {
     if(req.isAuthenticated()){
         res.redirect("/home");
     }else{
         res.render("index");
     }
+});
+
+app.get("index", (req, res) => {
+     res.render("index");
 });
 
 app.get("/signup", (req, res) => {
@@ -162,10 +195,21 @@ app.get("/account", (req, res) => {
         let name = req.user.name;
         let email = req.user.username;
         let phone = req.user.phone;
+       
         res.render("account", {name: name, email: email, phone: phone});
     }else{
         res.redirect("/")
     }
+});
+
+app.get("/admission-form", (req, res) => {
+
+    if(req.isAuthenticated()){
+        res.render("admission_form");
+    }else{
+        res.redirect("/")
+    }
+    
 });
 
 app.get("*", (req, res) => {
@@ -233,9 +277,45 @@ app.post("/ask-a-teacher", (req, res) => {
     let senderQuery = req.body.query;
 
  //sending automatic email from custom sendMail function...
-  sendMail(senderName, senderEmail, senderStreamSem, senderQuery).then(result =>  res.redirect("/home"))
+  sendMail(senderName, senderEmail, senderStreamSem, senderQuery).then(result =>  res.redirect("/"))
   .catch(error => console.log(error.message));
 
+});
+
+
+app.post("/admission-form", (req, res) => {
+    let sendTo = req.user.username;
+
+    let admData = {
+     applicantName: req.body.name,
+     applicantEmail: req.body.email,
+     applicantPhone: req.body.phone,
+     applicantDOB: req.body.dob,
+     applicantGender: req.body.gender,
+     applicantFathername: req.body.fathername,
+     applicantFatheroccupation: req.body.fatheroccupation,
+     applicantMothername: req.body.mothername,
+     applicantMotheroccupation: req.body.motheroccupation,
+     applicantAddress: req.body.address,
+     applicantTenthpercentage: req.body.tenmark,
+     applicantTwelthpercentage: req.body.twelvemark,
+     applicantStream: req.body.stream,
+    }
+
+    User.findById(req.user.id, (err, foundUser) => {
+        if(err){
+          console.log(err);
+        } else{
+          if(foundUser){
+            foundUser.admissionDetails = admData,
+            foundUser.save(() => {
+            //sending automatic email from custom sendMail function...
+            notification( JSON.stringify(admData), sendTo ).then(result =>  res.redirect("/home"))
+            .catch(error => console.log(error.message));
+            });
+          }
+        }
+      });
 });
 
 app.listen(process.env.PORT || 3000, "0.0.0.0", () => {

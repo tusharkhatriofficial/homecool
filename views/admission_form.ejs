@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset=";UTF-8">
+
+  <title>Homecool - Sign Up</title>
+  
+  
+  
+  
+<style>
+*{
+	font-family: "Quicksand", sans-serif;
+}
+*:active, *:focus{
+	outline: none;
+}
+
+
+body{
+	background: #32327F;
+	max-width: 960px;
+	margin: auto auto;
+	padding: 120px 25%;
+}
+
+.wrapper{
+	animation: fadeIn 0.8s;
+}
+
+label{
+	display: block;
+	color: #fff;
+	font-size: 2.3em;
+	font-weight: bold;
+	opacity: 0;
+	transition: all 1s;
+}
+
+input{
+	display: block;
+	width: 100%;
+	background: transparent;
+	border: none;
+	padding: 20px 10px 10px;
+	color: #eee;
+	font-size: 1.2em;
+	font-family: "Raleway", sans-serif;
+	letter-spacing: 0.08em;
+}
+
+button{
+	color: #fff;
+	background-color: #2c6f77;
+	border: none;
+	padding: 0.5em;
+	width: 9em;
+	transition: 0.3s;
+	margin: 0.2em;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+button:hover{
+	background-color: #000;
+}
+
+.input-bar{
+	width: 100%;
+	height: 1px;
+	background-color: #555;
+}
+
+.progress-bar{
+	width: 7%;
+	height: 2px;
+	background-color: #fff;
+}
+
+.steps-navigation{
+	float: right;
+	padding: 30px;
+}
+
+.current label{
+	opacity: 1;
+	transition: all 1s;
+}
+
+button{
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+	from{ 
+		opacity:  0; 
+	}
+	to{
+		opacity: 1;
+	}
+}
+@keyframes fadeInOut {
+	0%{ 
+		opacity:  0; 
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+<div class="wrapper">
+	<form class="steps" action="/admission-form" method="POST">
+		<div>
+			<div class="step1" data-bind="fadeVisible: step() == 1, css: {current : step() == 1}, hasfocus: step() == 1">
+        <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+				<label>What's your full name?</label>
+				<input type="text" name="name" data-bind="value: name">
+			</div>
+			<div class="step2" data-bind="fadeVisible: step() == 2, css: {current : step() == 2}, hasfocus: step() == 2">
+        <center>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/b2a32b25-c451-4246-a37f-c03d3ebbde49/NdtOGHVmmx.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+        </center>
+        
+				<label>What's your e-mail?</label>
+				<input type="email" name="email" data-bind="value: email">
+			</div>
+			<div class="step3" data-bind="fadeVisible: step() == 3, css: {current : step() == 3}, hasfocus: step() == 3">
+        <center>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/169197da-ab6c-41b6-bc4f-ee1d76f19a67/i8hFw9nfpg.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+        </center>
+				<label>Where can we call you?</label>
+				<input type="phone" name="phone" data-bind="value: phone">
+			</div>
+			<div class="step4" data-bind="fadeVisible: step() == 4, css: {current : step() == 4}, hasfocus: step() == 4">
+        <center>
+
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/56c711bb-d149-4cf1-8b59-bf70df00eaf5/AGGH2ylnfp.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+				<label>When were you born?</label>
+				<input type="date" name="dob" data-bind="value: date">
+			</div>
+<div class="step4" data-bind="fadeVisible: step() == 5, css: {current : step() == 5}, hasfocus: step() == 5">
+        <center>
+
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+			<label>How do we refer to you?</label>
+				<br/>
+                        <select id="dropdown" name="gender" data-bind="value: dropdown" style="width: 100%; height: 30px">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+     </select>
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 6, css: {current : step() == 6}, hasfocus: step() == 6">
+      <center> <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+	<label>What's your Father's name?</label>
+				<input type="text" name="fathername" data-bind="value: fathername">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 7, css: {current : step() == 7}, hasfocus: step() == 7">
+      <center>  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+		<label>What's your Father's Occupation?</label>
+				<input type="text" name="fatheroccupation" data-bind="value: fatheroccupation">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 8, css: {current : step() == 8}, hasfocus: step() == 8">
+      <center> <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+			<label>What's your Mother's name?</label>
+				<input type="text" name="mothername" data-bind="value: mothername">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 9, css: {current : step() == 9}, hasfocus: step() == 9">
+       <center> <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/95d592d9-728c-411f-8c4e-f06a7bd8e524/fdboKELgXW.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+			<label>What's your Mother's Occupation?</label>
+				<input type="text" name="motheroccupation" data-bind="value: motheroccupation">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 10, css: {current : step() == 10}, hasfocus: step() == 10">
+        <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/b8e81f09-8559-473b-b8b7-2b96f0f2dcd9/SfAYFCxSct.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+				<label>What's your complete address?</label>
+				<input type="text" name="address" data-bind="value: address">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 11, css: {current : step() == 11}, hasfocus: step() == 11">
+        <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/4c0d5ac4-4751-4d78-8f07-f68f2bb13982/JLkUbJBGJX.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>	
+		<label>How much percent or CGPA you secure in secondary?</label>
+				<input type="text" name="tenmark" data-bind="value: tenmark">
+			</div>
+<div class="step1" data-bind="fadeVisible: step() == 12, css: {current : step() == 12}, hasfocus: step() == 12">
+        <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/4c0d5ac4-4751-4d78-8f07-f68f2bb13982/JLkUbJBGJX.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>	
+			<label>How much percent or CGPA you secure in senior secondary?</label>
+				<input type="text" name="twelvemark" data-bind="value: twelvemark">
+			</div>
+<div class="step4" data-bind="fadeVisible: step() == 13, css: {current : step() == 13}, hasfocus: step() == 13">
+        <center>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/4c0d5ac4-4751-4d78-8f07-f68f2bb13982/JLkUbJBGJX.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>	
+			<label>Which Course do you wanna join?</label>
+				<br/>
+                        <select id="dropdown" name="stream" data-bind="value: dropdown2" style="width: 100%; height: 30px">
+    <option value="cse">BTech in Computer Science</option>
+    <option value="it">BTech in Information Technology</option>
+    <option value="mechanical">BTech in Mechanical</option>
+<option value="electronics">BTech in Electronics</option>
+<option value="civil">BTech in Civil</option>
+
+     </select>
+			</div>
+
+			<div class="step5" data-bind="fadeVisible: step() == 14, css: {current : step() == 14}, hasfocus: step() == 14">
+                  <center> <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/3151065c-f032-49f6-bc7e-770b0c4b804f/wiNSsYFRmU.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player></center>
+        <label>Great Job!, <span data-bind="text: name"></span>!<br>
+          You are ready to submit!. </label>
+        <br>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="input-bar"></div>
+			<div class="progress-bar"></div>
+		</div>
+		<div class="steps-navigation">
+			<button class="prev" data-bind="visible: step() > 1, click: prev">previous</button>
+			<button class="next" data-bind="visible: step() < 13, click: next">next</button>
+			<button id="done" data-bind="visible: step() == 13, click: next"><a href="home.htm">done</a></button>
+            <button type="submit" data-bind="visible: step() == 14">Submit</button>
+		</div>
+	</form>
+</div>
+  </center>
+  </div>
+</body>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js'></script>
+      <script id="rendered-js" >
+var vm = {
+  name: ko.observable(""),
+  email: ko.observable(""),
+  phone: ko.observable(""),
+  password: ko.observable(""),
+date: ko.observable(""),
+dropdown: ko.observable(""),
+fathername: ko.observable(""),
+fatheroccupation: ko.observable(""),
+mothername: ko.observable(""),
+motheroccupation: ko.observable(""),
+address: ko.observable(""),
+tenmark: ko.observable(""),
+twelvemark: ko.observable(""),
+dropdown2: ko.observable(""),
+  subject: ko.observable(""),
+  step: ko.observable(1),
+  prev: function () {
+    var step = vm.step() - 1;
+    if (step >= 1) {
+      vm.step(step);
+      $('.progress-bar').animate({
+        width: step * 7 + '%' });
+
+    }
+  },
+  next: function () {
+    var step = vm.step() + 1;
+    if (step <= 14) {
+      vm.step(step);
+      $('.progress-bar').animate({
+        width: step * 7 + '%' });
+
+    }
+  } };
+
+
+ko.bindingHandlers.fadeVisible = {
+  init: function (element, valueAccessor) {
+    // Initially set the element to be instantly visible/hidden depending on the value
+    var value = valueAccessor();
+    $(element).toggle(ko.unwrap(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+  },
+  update: function (element, valueAccessor) {
+    // Whenever the value subsequently changes, slowly fade the element in or out
+    var value = valueAccessor();
+    ko.unwrap(value) ? $(element).fadeIn() : $(element).hide();
+  } };
+
+
+
+ko.applyBindings(vm);
+
+
+    </script>
+
+  
+
+</body>
+
+</html>
+
