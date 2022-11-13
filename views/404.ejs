@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 Error Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color:#32327f;
+    min-height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.wrapper{
+    text-align: center;
+}
+.wrapper h2{
+    margin:0 0;	
+    font-size:2.5rem;
+    color: #fff;
+}
+.wrapper img{
+    width:600px;
+    max-width:66%;
+}
+.wrapper h4{
+    margin:10px 0 10px;
+    font-size:1.2rem;
+    color: #fff;
+}
+.main-btn{
+    padding:15px;
+    background-color:rgba(44, 111, 119, 1);
+    color:#fff;
+    border:none;
+    font-weight:700;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.main-btn:hover {
+    background-color: black;
+    color: white;
+ }
+
+@media (max-width:767px){
+    .wrapper h2{ 
+        font-size:2rem;
+    }
+    .wrapper h4{ 
+        font-size:1rem;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Oops! Page not found.</h2>
+       <center>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+      <lottie-player src="https://lottie.host/abd527f8-a10b-4e59-a28a-326ee9a76d93/yw0cj0qOQZ.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></lottie-player>
+          
+        
+        <h4>We can't find the page you're looking for.</h4>
+        <a href="home.htm"><button type="button" class="main-btn">GO BACK HOME</button></a>
+</center>
+    </div>
+</body>
+</html>
+
