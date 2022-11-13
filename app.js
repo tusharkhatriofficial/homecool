@@ -6,6 +6,9 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 //require google strategy
 const findOrCreate = require("mongoose-findorcreate");
+const { google } =  require("googleapis");
+const nodemailer = require("nodemailer");
+const { oauth2 } = require("googleapis/build/src/apis/oauth2");
 
 
 // 1 TODO: Require all these 3 packages, we don't have to require "passport-local" as it is already included with "passport-local-mongoose"
@@ -75,6 +78,38 @@ passport.serializeUser(function(User, done) {
 
 
 //database stuff ends
+
+
+//google oauth2 and nodemailer messging setup
+const oAuth2Client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
+oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN});
+
+async function sendMail(senderName, senderEmail, senderSubject, senderQuery){
+  try{
+    const ACCESS_TOKEN = await oAuth2Client.getAccessToken();
+    const transport = nodemailer.createTransport({  
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: 'noreply.tusharkhatri.in@gmail.com',
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: ACCESS_TOKEN,
+      },
+    });
+    const mailOptions = {
+      from: "Bot <noreply@tusharkhatri.in>",
+      to: "hello@tusharkhatri.in",
+      subject: `${senderEmail} sent you a message`,
+      text: `Message from ${senderName}:\n Subject: ${senderSubject}\n Query: ${senderQuery}`,
+    }
+    const result = await transport.sendMail(mailOptions);
+    return result;
+  }catch (error) {
+    return error;
+  }
+}
 
 
 app.get("/", (req, res) => {
@@ -187,6 +222,19 @@ app.post("/signin", (req, res) => {
             });
         }
     });
+
+});
+
+
+app.post("/ask-a-teacher", (req, res) => {
+    let senderName = req.body.name;
+    let senderEmail = req.body.email;
+    let senderStreamSem = req.body.streamSem;
+    let senderQuery = req.body.query;
+
+ //sending automatic email from custom sendMail function...
+  sendMail(senderName, senderEmail, senderStreamSem, senderQuery).then(result =>  res.redirect("/home"))
+  .catch(error => console.log(error.message));
 
 });
 
